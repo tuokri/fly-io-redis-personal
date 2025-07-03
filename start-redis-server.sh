@@ -20,8 +20,6 @@ fi
 # Set maxmemory to 90% of available memory
 MAXMEMORY=$(($FLY_VM_MEMORY_MB*90/100))
 
-echo "starting redis server"
-
 redis-server $PW_ARG \
   --dir /data/ \
   --maxmemory "${MAXMEMORY}mb" \
