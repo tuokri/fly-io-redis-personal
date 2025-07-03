@@ -17,12 +17,15 @@ fi
 if [ "${NOSAVE}" = "" ] ; then
   : ${SAVE:="3600 1 300 100 60 10000"}
 fi
-# Set maxmemory to 10% of available memory
+# Set maxmemory to 90% of available memory
 MAXMEMORY=$(($FLY_VM_MEMORY_MB*90/100))
+
+echo "starting redis server"
 
 redis-server $PW_ARG \
   --dir /data/ \
   --maxmemory "${MAXMEMORY}mb" \
   --maxmemory-policy $MAXMEMORY_POLICY \
   --appendonly $APPENDONLY \
-  --save "$SAVE"
+  --save "$SAVE" \
+  --loglevel debug

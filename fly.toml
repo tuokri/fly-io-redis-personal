@@ -1,17 +1,15 @@
-app = "redis-example"
+app = "fly-io-redis"
+primary_region = "ams"
 
-[mounts]
-  destination = "/data"
-  source = "redis_server"
+[[vm]]
+  size = "shared-cpu-1x"
 
 [metrics]
   port = 9091
   path = "/metrics"
 
-# Use the Docker image instead of building from source
-
 [build]
-  image = "flyio/redis:6.2.6"
+  dockerfile = "Dockerfile"
 
 # Uncomment these lines for public internet access to Redis on port 10000
 #
