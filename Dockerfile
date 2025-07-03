@@ -3,4 +3,4 @@ FROM redis:${REDIS_VERSION}-alpine
 
 COPY --chmod=777 ./start-redis-server.sh /usr/bin/start-redis-server.sh
 
-CMD ["/usr/bin/start-redis-server.sh"]
+ENTRYPOINT ["/usr/bin/start-redis-server.sh"]
